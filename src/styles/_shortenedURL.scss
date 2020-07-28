@@ -1,0 +1,37 @@
+.item {
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+    background-color: white;
+    padding: 15px 25px;
+    border-radius: 5px;
+    height: 70px;
+
+    &:last-of-type {
+        margin-bottom: 0;
+    }
+
+    .hash-id {
+        color: $cyan;
+    }
+
+    .btn--copy {
+        border: 0;
+        background-color: $cyan;
+        color: white;
+        cursor: pointer;
+        font-family: inherit;
+        width: 100px;
+        font-size: 16px;
+        font-weight: 700;
+        border-radius: 5px;
+        height: 100%;
+
+        &.active {
+            background-color: $dark-violet;
+            border: 3px solid $cyan;
+        }
+    }
+}

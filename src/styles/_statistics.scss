@@ -1,0 +1,18 @@
+.statistics {
+    padding: 35px 0 100px;
+    background-color: rgba($gray, 0.25);
+
+    &__textbox {
+        width: 50%;
+        margin: 0 auto 100px;
+        text-align: center;
+
+        .statistics__heading {
+            margin-bottom: 15px;
+        }
+
+        .statistics__subheading {
+            color: $grayish-violet;
+        }
+    }
+}

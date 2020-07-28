@@ -1,0 +1,40 @@
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 50px 8vw 75px;
+
+    &__links {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        font-weight: 700;
+        color: $grayish-violet;
+
+        &--main {
+            margin: auto 20px;
+            min-width: 300px;
+        }
+
+        &--secondary {
+            min-width: 180px;
+        }
+
+        .navbar__link {
+            font-size: 15px;
+
+            &:not(.navbar__link--highlight) a {
+                &:hover {
+                    color: $very-dark-violet;
+                }
+            }
+
+            &--highlight a {
+                border-radius: 50px;
+                background-color: $cyan;
+                padding: 8px 15px;
+                color: white;
+            }
+        }
+    }
+}

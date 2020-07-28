@@ -1,0 +1,28 @@
+.header {
+    display: flex;
+    justify-content: space-between;
+    margin: 0 0 0 8vw;
+
+    &__textbox {
+        flex: 0 0 45%;
+        height: min-content;
+        align-self: center;
+
+        .main__heading {
+            font-size: 3.5em;
+            line-height: 1.25;
+        }
+
+        .subheading {
+            color: hsl(257, 7%, 63%);
+            margin: 20px 0 30px;
+        }
+    }
+
+    &__image__container {
+        img { 
+            max-width: 100%;
+            margin-left: 7%;
+        }
+    }
+}
