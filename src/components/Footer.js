@@ -9,10 +9,10 @@ const Footer = () => {
     return (
         <div className="footer">
             <div className="logo__container column-1">
-                <img src={whiteLogo} className="logo--white" alt="Company logo" />
+                <img src={whiteLogo} className="logo logo--white" alt="Company logo" />
             </div>
 
-            <div className="links__container column-2">
+            <div className="footer__links__container column-2">
                 <div className="links__list--features">
                     <h5 className="links__heading">Features</h5>
                     <ul className="features__links footer__links">
@@ -47,16 +47,16 @@ const Footer = () => {
 
             <div className="social__logos column-3">
                 <a href="#" aria-label="Facebook icon">
-                    <i class="fab fa-facebook-square"></i>
+                    <i className="fab fa-facebook-square"></i>
                 </a>
                 <a href="#" aria-label="Twitter icon">
-                    <i class="fab fa-twitter"></i>
+                    <i className="fab fa-twitter"></i>
                 </a>
                 <a href="#" aria-label="Pinterest icon">
-                    <i class="fab fa-pinterest"></i>
+                    <i className="fab fa-pinterest"></i>
                 </a>
                 <a href="#" aria-label="Instagram icon">
-                    <i class="fab fa-instagram"></i>
+                    <i className="fab fa-instagram"></i>
                 </a>
             </div>
         </div>
