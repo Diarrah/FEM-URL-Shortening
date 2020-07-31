@@ -1,9 +1,10 @@
 import React, { useState, useRef } from 'react';
-import formBG from '../images/bg-shorten-desktop.svg';
+import desktopFormBG from '../images/bg-shorten-desktop.svg';
+import mobileFormBG from '../images/bg-shorten-mobile.svg';
 import axios from 'axios';
 import ShortenedURL from './ShortenedURL';
 
-const Form = () => {
+const Form = ({ viewportSize }) => {
     const [results, setResults] = useState([]);
     const [error, setError] = useState(false);
     const inputRef = useRef(null);
@@ -22,21 +23,34 @@ const Form = () => {
 
         let urlToShorten = inputRef.current.value;
         let urlValidation = new RegExp(/[(http(s)?):\/\/(www\.)?a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*)/gi);
-            // *** Thanks to https://regexr.com/39nr7 for this RegEx*** //
+            // *** Thanks to https://regexr.com/39nr7 for this RegEx*** //\
+        let errorMsg = document.querySelector('.form__control--small');
         
         if (urlValidation.test(urlToShorten)) {
             setError(false);
             getShorterLink(urlToShorten)
             inputRef.current.value = '';
+        } else if (!urlValidation.test(urlToShorten) && urlToShorten !== '') {
+            setError(true);
+            errorMsg.innerText = `Invalid URL`
         } else {
             setError(true);
+            errorMsg.innerText = `Please add a link`
         }
     }
 
     return (
         <div className="form__section">
             <form className="form" onSubmit={handleSubmit}>
-                <img src={formBG} className="form-bg--desktop" alt="" />
+                <img 
+                    className="form-bg--desktop"
+                    src={
+                        viewportSize > 733
+                            ? desktopFormBG
+                            : mobileFormBG
+                    }  
+                    alt="" 
+                />
                 <div className="form__control">
                     <input
                         ref={inputRef}
@@ -44,11 +58,11 @@ const Form = () => {
                         placeholder="Shorten a link here..."
                     />
                     <button className="form__control--button">Shorten It!</button>
-                    {error && <small className="form__control--small">Please add a link</small>}
+                    <small className={`form__control--small ${error ? 'error' : ''}`}></small>
                 </div>
             </form>
             <div className="form__output">
-                { results.map((res, i) => <ShortenedURL key={i} dataFromAPI={res} />) }
+                { results.slice(0).reverse().map((res, i) => <ShortenedURL key={i} dataFromAPI={res} />)  }
             </div>
         </div>
     )
