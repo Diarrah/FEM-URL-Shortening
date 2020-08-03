@@ -45,7 +45,7 @@ const Form = ({ viewportSize }) => {
 
     return (
         <div className="form__section">
-            <form className="form" onSubmit={handleSubmit}>
+            <div className="form--outer-shell">
                 <img 
                     className="form__bg"
                     src={
@@ -55,16 +55,17 @@ const Form = ({ viewportSize }) => {
                     }  
                     alt="" 
                 />
-                <div className="form__control">
+                <form className="form" onSubmit={handleSubmit}>
                     <input
                         ref={inputRef}
                         className={`form__control--input ${error ? 'error' : ''}`}
                         placeholder="Shorten a link here..."
+                        aria-label="Box to enter unhashed URL"
                     />
                     <button className="form__control--button">Shorten It!</button>
                     <small className={`form__control--small ${error ? 'error' : ''}`}></small>
-                </div>
-            </form>
+                </form>
+            </div>
             <div className="form__output">
                 { results.length > 3 // Limiting URL outputs to 3
                     ? results.shift() && mapShortenedURLOutputs
