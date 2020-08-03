@@ -1,5 +1,5 @@
 import React from 'react';
-import whiteLogo from '../images/logo-white.svg';
+import whiteLogo from '../images/logoWhite.svg';
 
 const Footer = () => {
     const featLinksList = ['Link Shortening', 'Branded Links', 'Analytics'];
@@ -13,7 +13,7 @@ const Footer = () => {
             </div>
 
             <div className="footer__links__container column-2">
-                <div className="links__list--features">
+                <div className="links__list links__list--features">
                     <h5 className="links__heading">Features</h5>
                     <ul className="features__links footer__links">
                         {featLinksList.map((link, i) => (
@@ -23,7 +23,7 @@ const Footer = () => {
                         ))}
                     </ul>
                 </div>
-                <div className="links__list--resources">
+                <div className="links__list links__list--resources">
                     <h5 className="links__heading">Resources</h5>
                     <ul className="resources__links footer__links">
                         {resourcesLinksList.map((link, i) => (
@@ -33,7 +33,7 @@ const Footer = () => {
                         ))}
                     </ul>
                 </div>
-                <div className="links__list--company">
+                <div className="links__list links__list--company">
                     <h5 className="links__heading">Company</h5>
                     <ul className="company__links footer__links">
                         {companyLinksList.map((link, i) => (
