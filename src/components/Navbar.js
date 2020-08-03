@@ -45,7 +45,7 @@ const Navbar = () => {
                     </li>
                 </ul>
             </div>
-            <a href="#" className="navbar--mobile">
+            <a href="#" className="navbar--mobile" aria-label="Button for mobile menu deployment">
                 <i className="fa fa-bars hamburger" aria-hidden="true" onClick={mobileNavOpen} />
                 <i className="fa fa-times close" aria-hidden="true" onClick={mobileNavClosed} />
             </a>
