@@ -1,20 +1,24 @@
 import React, { useState, useRef } from 'react';
+import axios from 'axios';
+
+import ShortenedURL from './ShortenedURL';
+
 import desktopFormBG from '../images/bg-shorten-desktop.svg';
 import mobileFormBG from '../images/bg-shorten-mobile.svg';
-import axios from 'axios';
-import ShortenedURL from './ShortenedURL';
 
 const Form = ({ viewportSize }) => {
     const [results, setResults] = useState([]);
     const [error, setError] = useState(false);
     const inputRef = useRef(null);
 
+    const mapShortenedURLOutputs = results.slice(0).reverse().map((res, i) => <ShortenedURL key={i} dataFromAPI={res} />); // Thought this function looked better in a variable for readability
+
     async function getShorterLink(url) {
         try {
             const response = await axios.post('https://rel.ink/api/links/', { url });
             setResults(res => [...res, response.data])
         } catch(error) {
-            console.log('ERROR:' + error)
+            console.log(error)
         }
     }
 
@@ -27,7 +31,7 @@ const Form = ({ viewportSize }) => {
         let errorMsg = document.querySelector('.form__control--small');
         
         if (urlValidation.test(urlToShorten)) {
-            setError(false);
+            setError(false)
             getShorterLink(urlToShorten)
             inputRef.current.value = '';
         } else if (!urlValidation.test(urlToShorten) && urlToShorten !== '') {
@@ -43,9 +47,9 @@ const Form = ({ viewportSize }) => {
         <div className="form__section">
             <form className="form" onSubmit={handleSubmit}>
                 <img 
-                    className="form-bg--desktop"
+                    className="form__bg"
                     src={
-                        viewportSize > 733
+                        viewportSize > 821
                             ? desktopFormBG
                             : mobileFormBG
                     }  
@@ -62,7 +66,10 @@ const Form = ({ viewportSize }) => {
                 </div>
             </form>
             <div className="form__output">
-                { results.slice(0).reverse().map((res, i) => <ShortenedURL key={i} dataFromAPI={res} />)  }
+                { results.length > 3 // Limiting URL outputs to 3
+                    ? results.shift() && mapShortenedURLOutputs
+                    : mapShortenedURLOutputs
+                }              
             </div>
         </div>
     )
