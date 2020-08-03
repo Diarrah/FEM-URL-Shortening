@@ -11,7 +11,8 @@ const Form = ({ viewportSize }) => {
     const [error, setError] = useState(false);
     const inputRef = useRef(null);
 
-    const mapShortenedURLOutputs = results.slice(0).reverse().map((res, i) => <ShortenedURL key={i} dataFromAPI={res} />); // Thought this function looked better in a variable for readability
+    // Thought this function looked better in a variable for readability
+    const mapShortenedURLOutputs = results.slice(0).reverse().map((res, i) => <ShortenedURL key={i} dataFromAPI={res} />); 
 
     async function getShorterLink(url) {
         try {
@@ -26,8 +27,7 @@ const Form = ({ viewportSize }) => {
         e.preventDefault();
 
         let urlToShorten = inputRef.current.value;
-        let urlValidation = new RegExp(/[(http(s)?):\/\/(www\.)?a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*)/gi);
-            // *** Thanks to https://regexr.com/39nr7 for this RegEx*** //\
+        let urlValidation = new RegExp(/[(http(s)?):\/\/(www\.)?a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*)/gi); // Thanks to https://regexr.com/39nr7 for this RegEx
         let errorMsg = document.querySelector('.form__control--small');
         
         if (urlValidation.test(urlToShorten)) {
