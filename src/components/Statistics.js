@@ -1,5 +1,5 @@
 import React from 'react';
-import CardSection from './CardSection';
+import AttributeSection from './AttributeSection';
 
 const Statistics = () =>  (
     <div className="statistics">
@@ -9,7 +9,7 @@ const Statistics = () =>  (
                 Track how your links are performing across the web with our advanced statistics dashboard.
             </p>
         </div>
-        <CardSection />
+        <AttributeSection />
     </div>
 )
 
