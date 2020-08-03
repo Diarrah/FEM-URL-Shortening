@@ -1,7 +1,7 @@
 import React from 'react';
 
 const Button = () => (
-    <button className="btn">
+    <button className="btn btn--started">
         Get Started
     </button>
 )
