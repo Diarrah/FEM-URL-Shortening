@@ -41,8 +41,6 @@ const Form = ({ viewportSize }) => {
             setError(true);
             errorMsg.innerText = `Please add a link`
         }
-
-        console.log(results)
     }
 
     return (
@@ -69,8 +67,8 @@ const Form = ({ viewportSize }) => {
                 </form>
             </div>
             <div className="form__output">
-                { results.length > 3 // Limiting URL outputs to 3
-                    ? mapShortenedURLOutputs && results.shift()
+                { results.length > 2 // Limiting URL outputs to 3
+                    ? results.shift() && mapShortenedURLOutputs
                     : mapShortenedURLOutputs
                 }              
             </div>
